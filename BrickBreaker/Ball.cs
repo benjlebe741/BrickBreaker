@@ -27,6 +27,7 @@ namespace BrickBreaker {
         }
 
         public bool BlockCollision ( Block brick ) {
+            //useless dummy commit comment
             //currently unused code, trying to 'weigh' the velocity randomization so we never stray too far from the normal values
             int xVelDeviation = (int)(((xVel / startingXVel) - 1) * 50);
             int yVelDeviation = (int)(((yVel / startingYVel) - 1) * 50);
