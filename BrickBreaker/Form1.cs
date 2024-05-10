@@ -25,7 +25,7 @@ namespace BrickBreaker
         {
             InitializeComponent();
             #region Creating Minecraft Font
-
+            //Information about the created font, from the MinecraftFont.ttf file.
             int fontLength = Properties.Resources.MinecraftFont.Length;
             byte[] fontdata = Properties.Resources.MinecraftFont;
             System.IntPtr data = Marshal.AllocCoTaskMem(fontLength);
@@ -36,15 +36,31 @@ namespace BrickBreaker
             #endregion
         }
 
+        //Create new private font collection
+        public static PrivateFontCollection pfc = new PrivateFontCollection();
+
+        //Global Timer Variables
+        public static int globalTimer;
+        public static int tickDeltaTime = 10;
+
+        //Keeps track of the level to load.
+        public static int currentLevel = 1;
+
+        //Music & Sounds that will be used through the whole project
+        public static SoundPlayer titleMusic = new SoundPlayer(Properties.Resources.titleMusic_wav);
+        public static SoundPlayer clickSound = new SoundPlayer(Properties.Resources.click);
+
+        //This function can be called at the start of any new User Control, it takes all the buttons and labels on screen--
+        //--and sets their font to be the 'Minecraft Font' that we created. 
         public static void SetLevelFonts(UserControl uc)
         {
             uc.AutoScaleMode = AutoScaleMode.Font;
-            foreach (System.Windows.Forms.Button b in uc.Controls.OfType<System.Windows.Forms.Button>())
+            foreach (System.Windows.Forms.Button b in uc.Controls.OfType<System.Windows.Forms.Button>()) //Buttons
             {
                 b.UseCompatibleTextRendering = true;
                 b.Font = new Font(pfc.Families[0], b.Font.Size);
             }
-            foreach (System.Windows.Forms.Label l in uc.Controls.OfType<System.Windows.Forms.Label>())
+            foreach (System.Windows.Forms.Label l in uc.Controls.OfType<System.Windows.Forms.Label>()) //Labels
             {
                 l.UseCompatibleTextRendering = true;
                 l.Font = new Font(pfc.Families[0], l.Font.Size);
@@ -52,33 +68,25 @@ namespace BrickBreaker
         }
 
 
-
-        //Create new private font collection
-        public static PrivateFontCollection pfc = new PrivateFontCollection();
-
-        public static int globalTimer;
-        public static int tickDeltaTime = 10;
-
-        public static int currentLevel = 1;
-
-        public static SoundPlayer titleMusic = new SoundPlayer(Properties.Resources.titleMusic_wav);
-        public static SoundPlayer clickSound = new SoundPlayer(Properties.Resources.click);
-
-
+        //Odin made helper functions that can be called from any screen
         #region helperFunctions
 
+        //Is the number negative?
         public static bool isNegative(float num) { return (Math.Abs(num) != num); }
 
+        //Gives the time since a point
         public static int timeSincePoint(int checkedTime)
         {
             return checkedTime < globalTimer ? (globalTimer - checkedTime) : -1;  // returns -1 if checkedtime is in the future
         }
 
+        //Clamp
         public static float clamp(float value, float min, float max)
         {
             return Math.Max(min, Math.Min(max, value));
         }
-
+        
+        //Change Screen
         public static void ChangeScreen(object sender, UserControl next)
         {
 
@@ -107,10 +115,8 @@ namespace BrickBreaker
 
         #endregion
 
-
-
+        //Odin also was in charge of the collision systems
         #region gameLogic
-
         public static int CheckCollision(Ball ball, Paddle rectObject, int collisionTimeStamp)
         { //returns 0 (no collision) or 1-4 (collides from the rectangle's top, right side, bottom and left side respectively)
 
@@ -167,42 +173,6 @@ namespace BrickBreaker
         }
 
         #endregion
-
-        #region XMLPacking
-
-        string x, y, width, height, id;
-        List<Block> blocks = new List<Block>();
-
-
-        public void LevelReader()
-        {
-            XmlReader reader = XmlReader.Create("Resources/GenXML.xml");
-
-            while (reader.Read())
-            { //exPLODE (thanks hark)
-                if (reader.NodeType == XmlNodeType.Text)
-                {
-
-                    x = reader.ReadString();
-
-                    reader.ReadToNextSibling("y");
-                    y = reader.ReadString();
-
-                    reader.ReadToNextSibling("width");
-                    width = reader.ReadString();
-
-                    reader.ReadToNextSibling("height");
-                    height = reader.ReadString();
-
-                    reader.ReadToNextSibling("id");
-                    id = reader.ReadString();
-
-                }
-            }
-        }
-
-        #endregion
-
 
 
         private void Form1_Load(object sender, EventArgs e)
