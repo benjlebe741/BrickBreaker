@@ -17,11 +17,13 @@ namespace BrickBreaker
         {
             parentScreen = _parentScreen;
             InitializeComponent();
+            //Set Level Fonts
             Form1.SetLevelFonts(this);
         }
 
         private void StartLevelScreen_KeyPress(object sender, KeyPressEventArgs e)
         {
+            //If the user presses Space or Escape, Begin the game.
             if ((Keys)e.KeyChar == Keys.Space || (Keys)e.KeyChar == Keys.Enter) 
             {
                 parentScreen.gameTimer.Enabled = true;
