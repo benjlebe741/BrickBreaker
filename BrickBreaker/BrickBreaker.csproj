@@ -557,13 +557,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\cake_side.png" />
- </ItemGroup>
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\titleMusic.wav.wav" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\flame.png" />
-    </ItemGroup>
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\netherackBkgd1.jpg" />
   </ItemGroup>
@@ -581,6 +581,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\fireball.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clock_item.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

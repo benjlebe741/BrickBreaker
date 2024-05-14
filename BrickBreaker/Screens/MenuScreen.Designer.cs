@@ -45,9 +45,10 @@
             this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.playButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playButton.ForeColor = System.Drawing.Color.White;
-            this.playButton.Location = new System.Drawing.Point(143, 358);
+            this.playButton.Location = new System.Drawing.Point(191, 441);
+            this.playButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.playButton.Name = "playButton";
-            this.playButton.Size = new System.Drawing.Size(514, 36);
+            this.playButton.Size = new System.Drawing.Size(685, 44);
             this.playButton.TabIndex = 0;
             this.playButton.Text = "P L A Y";
             this.playButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -62,9 +63,10 @@
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitButton.ForeColor = System.Drawing.Color.White;
-            this.exitButton.Location = new System.Drawing.Point(143, 459);
+            this.exitButton.Location = new System.Drawing.Point(191, 565);
+            this.exitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(514, 36);
+            this.exitButton.Size = new System.Drawing.Size(685, 44);
             this.exitButton.TabIndex = 1;
             this.exitButton.Text = "E X I T";
             this.exitButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -79,9 +81,10 @@
             this.levelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.levelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.levelButton.ForeColor = System.Drawing.Color.White;
-            this.levelButton.Location = new System.Drawing.Point(143, 409);
+            this.levelButton.Location = new System.Drawing.Point(191, 503);
+            this.levelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.levelButton.Name = "levelButton";
-            this.levelButton.Size = new System.Drawing.Size(514, 36);
+            this.levelButton.Size = new System.Drawing.Size(685, 44);
             this.levelButton.TabIndex = 2;
             this.levelButton.Text = "L E V E L";
             this.levelButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -95,10 +98,9 @@
             this.titleLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 60F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleLabel.ForeColor = System.Drawing.Color.LightGray;
-            this.titleLabel.Location = new System.Drawing.Point(2, 36);
-            this.titleLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.titleLabel.Location = new System.Drawing.Point(3, 44);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(798, 312);
+            this.titleLabel.Size = new System.Drawing.Size(1064, 384);
             this.titleLabel.TabIndex = 3;
             this.titleLabel.Text = "BRICK BREAKER";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -111,9 +113,10 @@
             this.skinsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.skinsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.skinsButton.ForeColor = System.Drawing.Color.White;
-            this.skinsButton.Location = new System.Drawing.Point(14, 15);
+            this.skinsButton.Location = new System.Drawing.Point(19, 18);
+            this.skinsButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.skinsButton.Name = "skinsButton";
-            this.skinsButton.Size = new System.Drawing.Size(114, 36);
+            this.skinsButton.Size = new System.Drawing.Size(152, 44);
             this.skinsButton.TabIndex = 4;
             this.skinsButton.Text = "S K I N S";
             this.skinsButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -123,7 +126,7 @@
             // 
             // MenuScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
@@ -132,8 +135,9 @@
             this.Controls.Add(this.levelButton);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.playButton);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MenuScreen";
-            this.Size = new System.Drawing.Size(800, 549);
+            this.Size = new System.Drawing.Size(1067, 676);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.MenuScreen_Paint);
             this.ResumeLayout(false);
 

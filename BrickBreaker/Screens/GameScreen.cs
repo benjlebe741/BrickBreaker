@@ -103,6 +103,9 @@ namespace BrickBreaker
         #endregion
         public GameScreen(bool immidiateStart)
         {
+            //Are we on Timer Kill Mode
+            timerKills = Form1.timerDeathMode;
+                
             InitializeComponent();
             this.Size = new Size(975, 667);
             SetLevelColors(Form1.currentLevel);

@@ -36,6 +36,10 @@ namespace BrickBreaker
             #endregion
         }
 
+        //A timer button on the main menu screen controls if you play with the timer ticking down and killing you, or just counting how long you take. 
+        //The variable to see what mode we play on is tracked here.
+        public static bool timerDeathMode = false;
+
         //Create new private font collection
         public static PrivateFontCollection pfc = new PrivateFontCollection();
 

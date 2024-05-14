@@ -12,13 +12,16 @@ namespace BrickBreaker
 {
     public class Powerup
     {
-        public int id, x, y, radius;
-        int fallSpeed;
-        public double lifeSpan, activeTime;
-        public Image image;
-        int time = 0;
-        public Rectangle rectangle;
-        public int strength = 1;
+        #region Global Variables
+        public int id, x, y, radius; 
+        int fallSpeed;  //How fast the powerup falls to the ground
+        public double lifeSpan, activeTime; //lifeSpan: the powerup will delete itself after some time. activeTime: How long you get the effects of the powerup
+        public Image image; //Icon representing the powerup
+        int time = 0; //time value works with lifespan and activetime
+        public Rectangle rectangle; //physical representation of the powerup when it falls
+        public int strength = 1; //strength increases if the same type of powerup is picked up
+        #endregion
+        
         public Powerup(int _id, int _x, int _y)
         {
             #region Powerup Data
@@ -47,6 +50,8 @@ namespace BrickBreaker
             id = _id;
             x = _x;
             y = _y;
+
+            //From the given ID we use the 'powerupData' array to set all our variables.
             fallSpeed = Convert.ToInt16(powerupData[id][0]);
             activeTime = lifeSpan = Convert.ToDouble(powerupData[id][1]);
             radius = Convert.ToInt16(powerupData[id][3]);
