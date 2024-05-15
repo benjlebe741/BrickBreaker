@@ -22,6 +22,7 @@ namespace BrickBreaker
         public int strength = 1; //strength increases if the same type of powerup is picked up
         #endregion
         
+        //Id will be passed to powerup from Block Data
         public Powerup(int _id, int _x, int _y)
         {
             #region Powerup Data
@@ -59,7 +60,7 @@ namespace BrickBreaker
             image = (Image)rm.GetObject(powerupData[id][2]);
         }
 
-
+        //Age should only be called once per tick, it returns the percentage of time left that is used to display the size of the powerup
         public double Age()
         {
             time++;

@@ -22,9 +22,10 @@ namespace BrickBreaker
         {
             InitializeComponent();
             Form1.SetLevelFonts(this);
+            SetToggleButton(Form1.timerDeathMode);
             Form1.titleMusic.Play();
 
-            titleRec = new Rectangle(0,-50,this.Right, 500);
+            titleRec = new Rectangle(0, -50, this.Right, 500);
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -76,6 +77,18 @@ namespace BrickBreaker
             form.Controls.Remove(this);
 
             cs.Location = new Point((form.Width - cs.Width) / 2, (form.Height - cs.Height) / 2);
+        }
+
+        private void timerToggleButton_Click(object sender, EventArgs e)
+        {
+            Form1.timerDeathMode = !Form1.timerDeathMode;
+            SetToggleButton(Form1.timerDeathMode);
+        }
+
+        private void SetToggleButton(bool mode)
+        {
+            timerToggleButton.BackColor = (mode) ? Color.Green : Color.IndianRed;
+            timerToggleButton.Text = (mode) ? "Timer: ON" : "Timer: OFF";
         }
     }
 }

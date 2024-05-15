@@ -28,7 +28,7 @@ namespace BrickBreaker
 {
     public partial class GameScreen : UserControl
     {
-        bool timerKills = false; //Set to true if you want the game to have a timer that can kill you
+        bool timerKills = Form1.timerDeathMode; //Set to true if you want the game to have a timer that can kill you
         #region global values
 
         //player1 button control keys - DO NOT CHANGE
@@ -60,7 +60,6 @@ namespace BrickBreaker
 
         System.Drawing.Bitmap netherBkgd = Properties.Resources.netherBackground;
         System.Drawing.Bitmap endBkgd = Properties.Resources.end_bricks;
-        //System.Drawing.Bitmap stoneBkgd = Properties.Resources.stonebkgd;
         System.Drawing.Bitmap dirtBkgd = Properties.Resources.minecraftBkgd;
 
         Rectangle xpBarRegion;
@@ -105,10 +104,12 @@ namespace BrickBreaker
         {
             //Are we on Timer Kill Mode
             timerKills = Form1.timerDeathMode;
-                
+
             InitializeComponent();
             this.Size = new Size(975, 667);
+            //Get the colors of this levels shadows and sunbeams based on the currentLevel variable
             SetLevelColors(Form1.currentLevel);
+            //there is a bool for immidiate
             OnStart(immidiateStart);
         }
 
@@ -227,30 +228,36 @@ namespace BrickBreaker
 
         public void OnStart(bool immidiateStart)
         {
-
-
+            //These lists will fill up during the game
             projectiles.Clear();
             activePowerups.Clear();
             fallingPowerups.Clear();
 
+            //MAX_LIVES is set as a constant because we use it to make sure you cant regenerate more than that Maximum amount of health
+            //lives is the variable we use to track how much health you currently have, and how many hearts we draw to the screen to display it.
             lives = MAX_LIVES;
+            //All this does is converts the time in green at the bottom from ticks to seconds when we display it
             timerToSecondsConversion = (double)1000 / (double)(gameTimer.Interval);
+            
+            #region backgrounds
 
+            //If the current level should have a dirt, nether, or end background, we find it out and set it here.
             if (Form1.IsWithinRange(Form1.currentLevel, 1, 7) || (Form1.IsWithinRange(Form1.currentLevel, 10, 11)))
             {
                 BackgroundImage = Properties.Resources.minecraftBkgd;
             }
-            if (Form1.IsWithinRange(Form1.currentLevel, 8, 9))
+            else if (Form1.IsWithinRange(Form1.currentLevel, 8, 9))
             {
                 BackgroundImage = Properties.Resources.netherackBkgd1;
             }
-            if (Form1.IsWithinRange(Form1.currentLevel, 12, 12))
+            else if (Form1.IsWithinRange(Form1.currentLevel, 12, 12))
             {
                 BackColor = Color.Black;
                 BackgroundImage = endBkgd;
             }
+            #endregion
 
-            //Start immidiately, or give the player a StartLevelScreen first.
+            //Start immidiately, or give the player a StartLevelScreen first. We start immidiately when you select 'play again'.
             if (immidiateStart) { gameTimer.Enabled = true; }
             else
             {
@@ -299,7 +306,7 @@ namespace BrickBreaker
             string path = "Resources/Level" + levelNumber + ".xml";
             XmlReader reader = XmlReader.Create(path);
 
-
+            //get x,y,width,height,and id.
             while (reader.Read())
             {
                 if (reader.NodeType == XmlNodeType.Text)
@@ -591,6 +598,7 @@ namespace BrickBreaker
 
         public void WinCondition()
         {
+            //if its level 12 set the current level back to the first, and display savannahs end screen!
             if (Form1.currentLevel == 12)
             {
                 Form1.currentLevel = 1;
@@ -604,6 +612,7 @@ namespace BrickBreaker
                 form.Controls.Add(ws);
                 form.Controls.Remove(this);
             }
+            //otherwise continue on to the next level.
             else
             {
                 Form1.currentLevel++;
@@ -619,6 +628,7 @@ namespace BrickBreaker
             }
         }
 
+        //calculates the score to be shown upon death, its a percentage of your blocks broken.
         double calculateScore()
         {
             int innitialScore = (int)(((double)(blocksNum - blocks.Count)) / (double)blocksNum * 10000);
@@ -769,7 +779,7 @@ namespace BrickBreaker
 
             #endregion
 
-                if (!gameTimer.Enabled)
+            if (!gameTimer.Enabled)
             {
                 e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(180, 0, 0, 0)), new Rectangle(new Point(0, 0), this.Size));
             }

@@ -34,6 +34,8 @@
             this.levelButton = new System.Windows.Forms.Button();
             this.titleLabel = new System.Windows.Forms.Label();
             this.skinsButton = new System.Windows.Forms.Button();
+            this.timerToggleButton = new System.Windows.Forms.Button();
+            this.timerLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // playButton
@@ -46,7 +48,7 @@
             this.playButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playButton.ForeColor = System.Drawing.Color.White;
             this.playButton.Location = new System.Drawing.Point(191, 441);
-            this.playButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.playButton.Margin = new System.Windows.Forms.Padding(4);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(685, 44);
             this.playButton.TabIndex = 0;
@@ -64,7 +66,7 @@
             this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitButton.ForeColor = System.Drawing.Color.White;
             this.exitButton.Location = new System.Drawing.Point(191, 565);
-            this.exitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.exitButton.Margin = new System.Windows.Forms.Padding(4);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(685, 44);
             this.exitButton.TabIndex = 1;
@@ -82,7 +84,7 @@
             this.levelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.levelButton.ForeColor = System.Drawing.Color.White;
             this.levelButton.Location = new System.Drawing.Point(191, 503);
-            this.levelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.levelButton.Margin = new System.Windows.Forms.Padding(4);
             this.levelButton.Name = "levelButton";
             this.levelButton.Size = new System.Drawing.Size(685, 44);
             this.levelButton.TabIndex = 2;
@@ -113,8 +115,8 @@
             this.skinsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.skinsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.skinsButton.ForeColor = System.Drawing.Color.White;
-            this.skinsButton.Location = new System.Drawing.Point(19, 18);
-            this.skinsButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.skinsButton.Location = new System.Drawing.Point(19, 70);
+            this.skinsButton.Margin = new System.Windows.Forms.Padding(4);
             this.skinsButton.Name = "skinsButton";
             this.skinsButton.Size = new System.Drawing.Size(152, 44);
             this.skinsButton.TabIndex = 4;
@@ -124,18 +126,50 @@
             this.skinsButton.UseVisualStyleBackColor = false;
             this.skinsButton.Click += new System.EventHandler(this.skinsButton_Click);
             // 
+            // timerToggleButton
+            // 
+            this.timerToggleButton.BackColor = System.Drawing.Color.IndianRed;
+            this.timerToggleButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.timerToggleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.timerToggleButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timerToggleButton.ForeColor = System.Drawing.Color.White;
+            this.timerToggleButton.Location = new System.Drawing.Point(19, 18);
+            this.timerToggleButton.Margin = new System.Windows.Forms.Padding(4);
+            this.timerToggleButton.Name = "timerToggleButton";
+            this.timerToggleButton.Size = new System.Drawing.Size(176, 44);
+            this.timerToggleButton.TabIndex = 5;
+            this.timerToggleButton.Text = "Timer: OFF";
+            this.timerToggleButton.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.timerToggleButton.UseCompatibleTextRendering = true;
+            this.timerToggleButton.UseVisualStyleBackColor = false;
+            this.timerToggleButton.Click += new System.EventHandler(this.timerToggleButton_Click);
+            // 
+            // timerLabel
+            // 
+            this.timerLabel.BackColor = System.Drawing.Color.Transparent;
+            this.timerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timerLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.timerLabel.Location = new System.Drawing.Point(199, 18);
+            this.timerLabel.Name = "timerLabel";
+            this.timerLabel.Size = new System.Drawing.Size(389, 44);
+            this.timerLabel.TabIndex = 6;
+            this.timerLabel.Text = "Fail when time = 0";
+            this.timerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // MenuScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.Controls.Add(this.timerLabel);
+            this.Controls.Add(this.timerToggleButton);
             this.Controls.Add(this.skinsButton);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.levelButton);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.playButton);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MenuScreen";
             this.Size = new System.Drawing.Size(1067, 676);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.MenuScreen_Paint);
@@ -150,5 +184,7 @@
         private System.Windows.Forms.Button levelButton;
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.Button skinsButton;
+        private System.Windows.Forms.Button timerToggleButton;
+        private System.Windows.Forms.Label timerLabel;
     }
 }
