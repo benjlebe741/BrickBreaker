@@ -89,6 +89,7 @@ namespace BrickBreaker
         {
             timerToggleButton.BackColor = (mode) ? Color.Green : Color.IndianRed;
             timerToggleButton.Text = (mode) ? "Timer: ON" : "Timer: OFF";
+            timerLabel.Visible = mode;
         }
     }
 }
